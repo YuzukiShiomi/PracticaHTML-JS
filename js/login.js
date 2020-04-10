@@ -148,8 +148,8 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   var username_element = e.srcElement.elements.username;
   var password_element = e.srcElement.elements.password;
 
-  sessionStorage.username = document.getElementById("username").value;
-  sessionStorage.password = document.getElementById("password").value;
+  localStorage.username = document.getElementById("username").value;
+  localStorage.password = document.getElementById("password").value;
 
   if (username_element && password_element) {
     username = username_element.value;
