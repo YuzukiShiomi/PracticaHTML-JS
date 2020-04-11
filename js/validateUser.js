@@ -1,8 +1,14 @@
-var loggedusers = [];
+var loggedUsers = [];
 
-document.getElementById('checkUser').addEventListener('click', checkLogin(window.localStorage.getItem('registeredUser')));
+document.getElementById('checkUser').addEventListener('click', function(e){
 
-function checkLogin(registeredUser){
+var userInfo = window.localStorage.getItem('registeredUser');
+
+alert(userInfo);
+
+});
+
+/*function checkLogin(registeredUser){
 
   alert(registeredUser);
 
@@ -17,5 +23,3 @@ function checkLogin(registeredUser){
     alert('Not registered user, please log in');
 
   }*/
-
-}
