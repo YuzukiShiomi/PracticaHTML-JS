@@ -18,7 +18,27 @@
 
 			<div align="center">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/zINpJR-Uppc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</div>				
+			</div>
+
+		<hr>
+
+		<body>
+		  <div style="visibility: hidden;" id="logged-in">
+		    <p><strong>Usuario:</strong>
+		    </p>
+		    <div id="logged-in-list"></div>
+		  </div>
+
+		  <form id="login-form">
+		    <label>Iniciar sesión:</label>
+		    <input type="text" placeholder="Nombre de usuario" id="username" required/>
+		    <input type="password" placeholder="Contraseña" id="password" required/>
+		    <input type="submit" value="Login" />
+		  </form>
+
+		  <script src='../js/login.js'></script>
+
+		</body>				
 
 		<hr>
 		<h3>Ir a...</h3>
