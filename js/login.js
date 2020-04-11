@@ -104,10 +104,12 @@ function updatelist() {
   if (list_element) {
     var list_container_element = document.getElementById('logged-in');
     var list_container_element_for_login = document.getElementById('login-form');
+    var list_container_element_for_check = document.getElementById('checkUser');
 
     if (list_container_element){
       list_container_element.style.visibility = loggedusers.length === 0 ? 'hidden' : 'visible';
       list_container_element_for_login.style.visibility = loggedusers.length === 0 ? 'visible' : 'hidden';
+      list_container_element_for_check.style.visibility = loggedusers.lenght === 0 ? 'visible' : 'hidden';
     }
 
     while (list_element.firstChild)

@@ -4,7 +4,9 @@ document.getElementById('checkUser').addEventListener('click', function(e){
 
 var userInfo = window.localStorage.getItem('registeredUser');
 
-alert(userInfo);
+userInfo = JSON.parse(userInfo);
+
+alert('Usuario: ' + userInfo.username);
 
 });
 
