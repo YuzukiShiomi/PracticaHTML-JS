@@ -92,6 +92,8 @@ function logout(userid) {
 
     updatelist();
 
+    window.localStorage.removeItem('registeredUser');
+
     return true;
   }
 
@@ -172,4 +174,33 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
       alert('Invalid username and/or password.');
     }
   }
+});
+
+document.getElementById('checkUser').addEventListener('click', function(e){
+
+  var registeredUser = window.localStorage.getItem('registeredUser');
+  userInfo = JSON.parse(registeredUser);
+
+  if(userInfo !== null){
+
+  switch(userInfo.type){
+    case "admin":
+      login(userInfo.username, userInfo.password);
+      //showAdminFeature();
+    break;
+    case "writer":
+      login(userInfo.username, userInfo.password);
+      //showWriterFeature();    
+    break;
+    case "reader":
+      login(userInfo.username, userInfo.password);  
+    break;
+  }
+
+  alert('Usuario: ' + userInfo.username);
+
+  } else {
+    alert('No estás logueado, por favor, inicia sesión.');
+  }
+
 });
