@@ -1,6 +1,6 @@
 # PracticaHTML-JS
 
-Práctica HTML realizada por:
+Práctica HTML/CSS-JS realizada por:
 
 Nombre: Rocío Franco García
 
