@@ -152,9 +152,6 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   var username_element = e.srcElement.elements.username;
   var password_element = e.srcElement.elements.password;
 
-  //localStorage.username = document.getElementById("username").value;
-  //localStorage.password = document.getElementById("password").value;
-
   if (username_element && password_element) {
     username = username_element.value;
     password = password_element.value;
@@ -186,15 +183,22 @@ document.getElementById('checkUser').addEventListener('click', function(e){
   switch(userInfo.type){
     case "admin":
       login(userInfo.username, userInfo.password);
-      //showAdminFeature();
+      showWriterFeature(false);
+      showAdminFeature(true);
     break;
     case "writer":
       login(userInfo.username, userInfo.password);
-      //showWriterFeature();    
+      showAdminFeature(false);
+      showWriterFeature(true);    
     break;
     case "reader":
-      login(userInfo.username, userInfo.password);  
+      login(userInfo.username, userInfo.password);
+      showAdminFeature(false);
+      showWriterFeature(false);  
     break;
+    default:
+      showAdminFeature(false);
+      showWriterFeature(false);
   }
 
   alert('Usuario: ' + userInfo.username);
@@ -204,3 +208,16 @@ document.getElementById('checkUser').addEventListener('click', function(e){
   }
 
 });
+
+function showAdminFeature(show){
+
+  if(show){
+
+  }
+
+}
+
+function showWriterFeature(show){
+
+
+}
