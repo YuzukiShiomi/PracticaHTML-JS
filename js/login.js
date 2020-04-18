@@ -102,6 +102,7 @@ function logout(userid) {
 
 function updatelist() {
   var list_element = document.getElementById('logged-in-list');
+  var list_logged = document.getElementById('all-list');
 
   if (list_element) {
     var list_container_element = document.getElementById('logged-in');
@@ -112,6 +113,7 @@ function updatelist() {
       list_container_element.style.visibility = loggedusers.length === 0 ? 'hidden' : 'visible';
       list_container_element_for_login.style.visibility = loggedusers.length === 0 ? 'visible' : 'hidden';
       list_container_element_for_check.style.visibility = loggedusers.lenght === 0 ? 'visible' : 'hidden';
+      list_logged.style.visibility = loggedusers.length === 0 ? 'hidden' : 'visible';
     }
 
     while (list_element.firstChild)
@@ -180,28 +182,28 @@ document.getElementById('checkUser').addEventListener('click', function(e){
 
   if(userInfo !== null){
 
-  switch(userInfo.type){
-    case "admin":
-      login(userInfo.username, userInfo.password);
-      showWriterFeature(false);
-      showAdminFeature(true);
-    break;
-    case "writer":
-      login(userInfo.username, userInfo.password);
-      showAdminFeature(false);
-      showWriterFeature(true);    
-    break;
-    case "reader":
-      login(userInfo.username, userInfo.password);
-      showAdminFeature(false);
-      showWriterFeature(false);  
-    break;
-    default:
-      showAdminFeature(false);
-      showWriterFeature(false);
-  }
+    switch(userInfo.type){
+      case "admin":
+        login(userInfo.username, userInfo.password);
+        //showWriterFeature(false);
+        //showAdminFeature(true);
+      break;
+      case "writer":
+        login(userInfo.username, userInfo.password);
+        //showAdminFeature(false);
+        //showWriterFeature(true);    
+      break;
+      case "reader":
+        login(userInfo.username, userInfo.password);
+        //showAdminFeature(false);
+        //showWriterFeature(false);  
+      break;
+      default:
+        //showAdminFeature(false);
+        //showWriterFeature(false);
+    }
 
-  alert('Usuario: ' + userInfo.username);
+    alert('Usuario: ' + userInfo.username);
 
   } else {
     alert('No estás logueado, por favor, inicia sesión.');
@@ -209,9 +211,17 @@ document.getElementById('checkUser').addEventListener('click', function(e){
 
 });
 
-function showAdminFeature(show){
+function showAdminFeature(show, userType){
+
+  var elementShow = document.getElementById('createPerson');
 
   if(show){
+
+    var btn = document.createElement("BUTTON");
+
+  } else {
+
+
 
   }
 
@@ -221,3 +231,37 @@ function showWriterFeature(show){
 
 
 }
+
+window.addEventListener('load', function(e){
+
+  var userType = window.localStorage.getItem("registeredUser");
+  userType = JSON.parse(userType);
+
+  var list_element = document.getElementById('all-list');
+
+  if (userType == null){
+      list_element.style.visibility = 'hidden';
+  } else {
+    login(userType.username, userType.password);
+
+    switch (userType.type){
+      case 'writer':
+
+        list_element.style.visibility = 'visible';
+
+      break;
+      case 'reader':
+
+        list_element.style.visibility = 'visible';
+
+      break;
+
+      default:
+
+        list_element.style.visibility = 'visible';
+
+    }
+
+  }
+
+});
