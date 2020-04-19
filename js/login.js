@@ -72,6 +72,7 @@ function login(username, password) {
       loggedusers[loggeduser.id] = true;
 
       updatelist();
+      createPage(loggeduser);
 
       return loggeduser;
     }
@@ -93,6 +94,7 @@ function logout(userid) {
     updatelist();
 
     window.localStorage.removeItem('registeredUser');
+    createPage('');
 
     return true;
   }
@@ -113,6 +115,9 @@ function updatelist() {
       list_container_element.style.visibility = loggedusers.length === 0 ? 'hidden' : 'visible';
       list_container_element_for_login.style.visibility = loggedusers.length === 0 ? 'visible' : 'hidden';
       list_container_element_for_check.style.visibility = loggedusers.lenght === 0 ? 'visible' : 'hidden';
+    }
+
+    if (list_logged) {
       list_logged.style.visibility = loggedusers.length === 0 ? 'hidden' : 'visible';
     }
 
@@ -211,7 +216,7 @@ document.getElementById('checkUser').addEventListener('click', function(e){
 
 });
 
-function showAdminFeature(show, userType){
+/*function showAdminFeature(show, userType){
 
   var elementShow = document.getElementById('createPerson');
 
@@ -230,7 +235,7 @@ function showAdminFeature(show, userType){
 function showWriterFeature(show){
 
 
-}
+}*/
 
 window.addEventListener('load', function(e){
 
@@ -238,30 +243,59 @@ window.addEventListener('load', function(e){
   userType = JSON.parse(userType);
 
   var list_element = document.getElementById('all-list');
+  //var writer_create_element = document.getElementById('create-form');
 
-  if (userType == null){
-      list_element.style.visibility = 'hidden';
-  } else {
-    login(userType.username, userType.password);
+  if (list_element){
 
-    switch (userType.type){
-      case 'writer':
+    if (userType == null){
 
-        list_element.style.visibility = 'visible';
+        list_element.style.visibility = 'hidden';
+        
+    } else {
+      login(userType.username, userType.password);
 
-      break;
-      case 'reader':
+      switch (userType.type){
+        case 'writer':
 
-        list_element.style.visibility = 'visible';
+          list_element.style.visibility = 'visible';
+          //writer_create_element.style.visibility = 'visible';
+          createPage(userType);
 
-      break;
+        break;
+        case 'reader':
 
-      default:
+          list_element.style.visibility = 'visible';
+          //writer_element.style.visibility = 'hidden';
+          createPage(userType);
 
-        list_element.style.visibility = 'visible';
+        break;
 
+        case 'admin': //admin
+          list_element.style.visibility = 'visible';
+          //writer_create_element.style.visibility = 'visible';
+          createPage(userType);
+
+        break;
+        default:
+          list_element.style.visibility = 'hidden';
+          //writer_create_element.style.visibility = 'hidden';
+          createPage(userType);
+      }
+    }
+
+  }
+});
+
+function createPage(userType){
+
+  var writer_create_element = document.getElementById('create-form');
+
+  if(userType.lenght !== 0){
+
+    if(writer_create_element){
+      writer_create_element.style.visibility = (userType.type == 'writer' || userType.type == 'admin') ? 'visible' : 'hidden';
     }
 
   }
 
-});
+};

@@ -441,7 +441,7 @@ dd{
     background:transparent;
     margin-bottom:.5rem;
     font-size:1rem;
-	width:30%;
+	width:40%;
     max-width:100%;
     line-height:1
 }
@@ -484,7 +484,10 @@ label{
     font-weight:600;
     max-width:100%;
     display:block;
-    margin:1rem 0 .5rem
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
 }
 @media (min-width:600px){
     .split-form label{
