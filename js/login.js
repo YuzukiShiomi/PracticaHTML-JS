@@ -100,7 +100,7 @@ function logout(userid) {
     createPage('');
     deletePage('');
     editPage('');
-    showContent('');
+    showContent(null);
 
     return true;
   }
