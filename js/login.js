@@ -159,6 +159,50 @@ function updatelist() {
   return false;
 }
 
+function createPage(userType){
+
+  var writer_create_element = document.getElementById('create-form');
+  if(userType.lenght !== 0){
+    if(writer_create_element){
+      writer_create_element.style.visibility = (userType.type == 'writer' || userType.type == 'admin') ? 'visible' : 'hidden';
+    }
+  }
+}
+
+function editPage(userType){
+
+  var writer_edit_element = document.getElementById('edit-form');
+  if(userType.lenght !==0){
+    if(writer_edit_element){
+      writer_edit_element.style.visibility = (userType.type == 'writer' || userType.type == 'admin') ? 'visible' : 'hidden';
+    }
+  }
+}
+
+function deletePage(userType){
+
+    var writer_delete_element = document.getElementById('delete-button');
+    if(userType.lenght !== 0){
+      if(writer_delete_element){
+        writer_delete_element.style.visibility = (userType.type == 'writer'  || userType.type == 'admin') ? 'visible' : 'hidden';
+      }
+    }
+}
+
+function showContent(userType){
+
+  var list_element = document.getElementById('all-list');
+  var content_element = document.getElementById('content');
+
+  if(list_element){
+    list_element.style.visibility = userType == null ? 'hidden' : 'visible';
+  }
+
+  if(content_element){
+    content_element.style.visibility = userType == null ? 'hidden' : 'visible';
+  }
+}
+
 document.getElementById('login-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -237,8 +281,6 @@ var userType = window.localStorage.getItem("registeredUser");
       switch (userType.type){
         case 'writer':
           showContent(userType);
-          //list_element.style.visibility = 'visible';
-          //writer_create_element.style.visibility = 'visible';
           createPage(userType);
           editPage(userType);
           deletePage(userType);
@@ -246,8 +288,6 @@ var userType = window.localStorage.getItem("registeredUser");
         break;
         case 'reader':
           showContent(userType);
-          //list_element.style.visibility = 'visible';
-          //writer_element.style.visibility = 'hidden';
           createPage(userType);
           editPage(userType);
           deletePage(userType);
@@ -255,9 +295,7 @@ var userType = window.localStorage.getItem("registeredUser");
         break;
 
         case 'admin': //admin
-        showContent(userType);
-          //list_element.style.visibility = 'visible';
-          //writer_create_element.style.visibility = 'visible';
+          showContent(userType);
           createPage(userType);
           editPage(userType);
           deletePage(userType);
@@ -265,8 +303,6 @@ var userType = window.localStorage.getItem("registeredUser");
         break;
         default:
           showContent(userType);
-          //list_element.style.visibility = 'hidden';
-          //writer_create_element.style.visibility = 'hidden';
           createPage(userType);
           editPage(userType);
           deletePage(userType);
@@ -274,59 +310,5 @@ var userType = window.localStorage.getItem("registeredUser");
     }
 });
 
-function createPage(userType){
 
-  var writer_create_element = document.getElementById('create-form');
-
-  if(userType.lenght !== 0){
-
-    if(writer_create_element){
-      writer_create_element.style.visibility = (userType.type == 'writer' || userType.type == 'admin') ? 'visible' : 'hidden';
-    }
-
-  }
-
-};
-
-function editPage(userType){
-
-  var writer_edit_element = document.getElementById('edit-form');
-
-  if(userType.lenght !==0){
-
-    if(writer_edit_element){
-      writer_edit_element.style.visibility = (userType.type == 'writer' || userType.type == 'admin') ? 'visible' : 'hidden';
-    }
-
-  }
-
-}
-
-function deletePage(userType){
-
-    var writer_delete_element = document.getElementById('delete-button');
-
-    if(userType.lenght !== 0){
-
-      if(writer_delete_element){
-        writer_delete_element.style.visibility = (userType.type == 'writer'  || userType.type == 'admin') ? 'visible' : 'hidden';
-      }
-
-    }
-
-}
-
-function showContent(userType){
-
-  var list_element = document.getElementById('all-list');
-  var content_element = document.getElementById('content');
-
-  if(list_element){
-    list_element.style.visibility = userType == null ? 'hidden' : 'visible';
-  }
-
-  if(content_element){
-    content_element.style.visibility = userType == null ? 'hidden' : 'visible';
-  }
-
-}
+document.getElementById('')
