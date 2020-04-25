@@ -33,26 +33,47 @@
 		</div>
 
 		<body>
-		  <div style="visibility: hidden;" id="logged-in">
-		    <p><strong>Usuario:</strong>
-		    </p>
+		<table style="width:100%">
+		<tr>
+		  <td><div style="visibility: hidden;" id="logged-in">
+		    <p><strong>Usuario:</strong></p>
 		    <div id="logged-in-list"></div>
 		  </div>
 
 		  <form id="login-form">
-		    <label>Iniciar sesión:</label>
+		    <p><strong>Iniciar sesión:</strong></p>
 		    <input type="text" placeholder="Nombre de usuario" id="username" required/>
 		    <input type="password" placeholder="Contraseña" id="password" required/>
 		    <input type="submit" value="Login" />
 		  </form>
 		  <input type="button" value="Validar Usuario" id="checkUser"/>
+		  </td>
 
-		  <script src='../js/login.js'></script>
-
+		  <td>
+		  	<div style="visibility: hidden;" id="create-form">
+		  		<p><strong>Crear:</strong></p><br>
+		  		<form id="create-form">
+		  			<label for="title">Título:</label>
+		  			<input type="text" placeholder="Título..." id="title" required/>
+		  			<label for="wikiUrl">Wiki URL:</label>
+		  			<input type="text" placeholder="Wiki URL..." id="wikiUrl" required/>
+		  			<label for="description">Descripción:</label>
+		  			<input type="text" placeholder="Descripción..." id="description" required/>
+		  			<label for="videoUrl">Vídeo:</label>
+		  			<input type="text" placeholder="Video URL..." id="videoUrl" required/>
+		  			<label for="imageUrl">Imagen:</label>
+		  			<input type="text" placeholder="Imagen url..." id="imageUrl" required/>
+		  			<input type="submit" value="Crear nuevo"/>
+		  		</form>
+		  	</div>
+		  </td>		  
+		</tr>
+		</table>
 		</body>
+
+		<script src='../js/login.js'></script>
+
 		<hr>
-
-
 		<h3>Ir a...</h3>
 		<ul>
 			<li><a href="../autores/autores.html">Autores</a></li>
